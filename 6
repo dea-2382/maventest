@@ -1,0 +1,87 @@
+ Goal of Program 6:
+Set up a Continuous Integration (CI) Pipeline using Jenkins that:
+
+Builds a Maven project
+
+Runs automated tests
+
+Uses Jenkins automation features for efficiency
+
+🔧 What You Need Before Starting
+Jenkins must be installed and running.
+
+Maven must be installed on your system.
+
+You must have a working Maven project with a pom.xml file on your local system.
+
+Git or any version control is recommended but not mandatory for this example.
+
+🪜 Step-by-Step Procedure
+STEP 1: Open Jenkins
+Go to your Jenkins Dashboard (http://localhost:8080/).
+
+Click on "Manage Jenkins".
+
+STEP 2: Install Maven Integration Plugin
+Click "Manage Plugins".
+
+Go to the Available tab.
+
+Search for “Maven Integration Plugin”.
+
+Select and install it.
+
+After installation, restart Jenkins if required.
+
+STEP 3: Configure Maven in Jenkins
+Go back to Manage Jenkins → Click on Global Tool Configuration or Tools.
+
+Scroll to Maven section:
+
+Click Add Maven.
+
+Give it a name like MAVEN_HOME.
+
+Choose "Install automatically" or set the path to your local Maven installation (e.g., C:\apache-maven-3.8.6).
+
+STEP 4: Create a Freestyle Project
+You may already have a Maven project (not a new one from scratch), so:
+
+From Jenkins Dashboard, click "New Item".
+
+Enter a project name (e.g., CI-Maven-Build).
+
+Choose Freestyle Project.
+
+Click OK.
+
+STEP 5: Configure the Build
+In the project configuration:
+
+a) Scroll to the Build section
+Click “Add Build Step” → Select “Invoke top-level Maven targets”.
+
+b) Configure Maven build settings:
+Maven Version: Select the version you configured earlier (MAVEN_HOME).
+
+Goals: Enter clean install
+
+POM Path:
+
+Click Advanced
+
+Enter the path to your Maven pom.xml file.
+Example:
+C:\Users\CMRIT-ISE-L209-009\Desktop\IS147\pgm4\pom.xml
+
+STEP 6: Save and Run
+Click Apply → Save
+
+On the project page, click Build Now
+
+The build will start.
+
+You can see the build logs in Console Output.
+
+If successful, the Maven project was built and tested automatically.
+
