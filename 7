@@ -1,0 +1,109 @@
+ STEP 1: Configure the Ansible Control Node
+This is the main system from which you control and configure other servers.
+
+Create a new admin user
+
+bash
+Copy
+Edit
+sudo adduser yourname
+Set a password when asked. (You can skip other questions by pressing Enter.)
+
+Give the user sudo (admin) rights
+
+bash
+Copy
+Edit
+sudo usermod -aG sudo yourname
+Switch to that user
+
+bash
+Copy
+Edit
+sudo su - yourname
+🔐 STEP 2: Set Up SSH Keys
+SSH keys help you connect securely without typing a password every time.
+
+Create a key pair
+
+bash
+Copy
+Edit
+ssh-keygen
+Just press Enter 3 times to accept the defaults.
+
+🌐 STEP 3: Configure the Remote Host (Other Server)
+This is the server you want to control.
+
+Copy your public SSH key to the remote host
+
+bash
+Copy
+Edit
+ssh-copy-id username@remote-ip
+Replace username with the user on the remote machine.
+
+Replace remote-ip with the IP address of that machine.
+
+Accept the connection by typing yes and entering the remote password.
+
+📦 STEP 4: Install Ansible
+Update your system
+
+bash
+Copy
+Edit
+sudo apt update
+Install Ansible
+
+bash
+Copy
+Edit
+sudo apt install ansible -y
+🔍 STEP 5: Verify Ansible is Installed
+Check version
+
+bash
+Copy
+Edit
+ansible --version
+You’ll see Ansible’s version and config details.
+
+📝 STEP 6: Set Up the Inventory File
+This file tells Ansible which machines it can control.
+
+Create the Ansible config folder
+
+bash
+Copy
+Edit
+sudo mkdir -p /etc/ansible
+Create and edit the hosts file
+
+bash
+Copy
+Edit
+sudo nano /etc/ansible/hosts
+Add this inside the file (to manage your own machine):
+
+bash
+Copy
+Edit
+[local]
+localhost ansible_connection=local
+Save and exit (Ctrl + O, Enter, then Ctrl + X).
+
+Check the inventory
+
+bash
+Copy
+Edit
+ansible-inventory --list -y
+📡 STEP 7: Test the Connection
+Ping all hosts to check connection
+
+bash
+Copy
+Edit
+sudo ansible all -m ping
+If it works, you’ll see a "pong" reply from each host.
