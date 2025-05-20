@@ -1,0 +1,28 @@
+STEP 1: Enable Pipeline Settings
+Go to your Azure DevOps Organization.
+
+Click on "Organization Settings" (bottom-left corner).
+
+Then click on "Pipeline Settings".
+
+You’ll see some options related to pipeline features.
+
+STEP 2: Enable Classic Release Pipelines
+Find the setting called “Disable creation of classic pipeline”.
+
+Turn this OFF (i.e., allow classic pipeline creation).
+
+This lets you create Release pipelines (older but useful UI-based deployments).
+
+STEP 3: Check for Release Option
+Now go back to the Pipelines section.
+
+You will now see the “Releases” tab visible.
+
+This allows you to set up release pipelines that can deploy your app to services like Azure App Services.
+
+STEP 4: Run Test Plans (Optional)
+You can add and run simple test plans within your pipeline.
+
+Test plans help ensure your app works correctly before deploying.
+
