@@ -1,0 +1,68 @@
+Enable Public Projects in Azure DevOps
+Go to https://dev.azure.com and sign in.
+
+Create a new Organization (if not already created).
+
+Go to Organization Settings > Policies.
+
+Turn ON the setting "Allow Public Projects".
+
+Step 2: Create a Maven Project Locally
+Open Git Bash.
+
+Run the following commands:
+
+bash
+Copy
+Edit
+mkdir maventest1
+cd maventest1
+Create a basic Maven project by running:
+
+bash
+Copy
+Edit
+mvn archetype:generate -DgroupId=com.dineshonjava -DartifactId=Javateam \
+-DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+Step 3: Push the Project to GitHub
+Go to https://github.com and create a new repo named maventestazure.
+
+In Git Bash, inside your project folder, run:
+
+bash
+Copy
+Edit
+git init
+git add .
+git commit -m "azure pipeline example"
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/maventestazure.git
+git push -u origin main
+Replace YOUR_USERNAME with your actual GitHub username.
+
+Step 4: Create a Project in Azure DevOps
+Go to your Azure DevOps organization.
+
+Click "New Project".
+
+Name it (e.g., maventest123) and make it Public.
+
+Step 5: Set Up Azure Pipeline
+In your project dashboard, go to Pipelines.
+
+Click Create Pipeline.
+
+Choose GitHub as your code source.
+
+Sign in and authorize GitHub access.
+
+Select your repo (maventestazure) from the list.
+
+Azure will detect it's a Maven project — select the Maven template.
+
+Click "Save and Run".
+
+Step 6: Fix pom.xml Path (If Needed)
+If the build fails, it might be because Azure couldn’t find pom.xml.
+
+Edit the pipeline and make sure the path to pom.xml is correct (usually in the root folder).
